@@ -1,25 +1,25 @@
-# NovaStoreDB: E-Ticaret Veritabanı Yönetimi ve Analitik Raporlama Sistemi
+# NovaStoreDB: E-Commerce Database Management and Analytical Reporting System
 
-NovaStoreDB, modern bir e-ticaret platformunun operasyonel veri akışını yönetmek, veri bütünlüğünü otomatikleştirmek ve stratejik karar alma süreçlerini desteklemek amacıyla SQL Server üzerinde geliştirilmiş ilişkisel bir veritabanı (RDBMS) projesidir.
+NovaStoreDB is a relational database (RDBMS) project developed on SQL Server to manage the operational data flow of a modern e-commerce platform, automate data integrity, and support strategic decision-making processes.
 
-Proje; veri tabanı mimarisi tasarımı (DDL), veri manipülasyonu (DML), veri tutarlılığı otomasyonu (Triggers) ve iş zekası analitiği (Reporting Queries) olmak üzere uçtan uca bir mimari sunmaktadır.
+The project offers an end-to-end database architecture encompassing database schema design (DDL), data manipulation (DML), data consistency automation (Triggers), and business intelligence analytics (Reporting Queries).
 
-## Teknik Mimari ve Çözüm Bileşenleri
+## Technical Architecture and Solution Components
 
-* **İlişkisel Veri Modeli (DDL):** Veri standardizasyonunu sağlamak ve anormallikleri önlemek amacıyla optimize edilmiş 5 ana tablo (`Categories`, `Customers`, `Products`, `Orders`, `OrderDetails`) mimarisi.
-* **Veri Tutarlılığı ve Otomasyon (Trigger):** `OrderDetails` tablosundaki herhangi bir veri değişikliğinde (`INSERT`, `UPDATE`, `DELETE`) tetiklenen ve ilişkili siparişin toplam tutarını (`TotalAmount`) anlık olarak asenkron hesaplayan `AFTER TRIGGER` mekanizması.
-* **Soyutlama Katmanı (View):** Karmaşık çoklu `INNER JOIN` yapılarını maskeleyerek sistem performansını artıran ve sorgu süreçlerini standartlaştıran `vw_SiparisOzet` katmanı.
-* **İş Zekası ve Analitik Sorgular:**
-  * Kritik stok seviyesi izleme ve envanter yönetimi.
-  * Müşteri segmentasyonu ve toplam ciro (Revenue) analizi.
-  * Zaman bazlı sipariş performansı ve veri analitiği (`DATEDIFF`).
+* **Relational Data Model (DDL):** An optimized 5-core-table architecture (`Categories`, `Customers`, `Products`, `Orders`, `OrderDetails`) engineered to ensure data standardization and prevent anomalies.
+* **Data Integrity and Automation (Trigger):** An `AFTER TRIGGER` mechanism activated by any data modification (`INSERT`, `UPDATE`, `DELETE`) in the `OrderDetails` table to compute and update the associated order's total amount (`TotalAmount`) asynchronously in real-time.
+* **Abstraction Layer (View):** The `vw_SiparisOzet` view layer, which masks complex multi-table `INNER JOIN` structures to optimize system performance and standardize query workflows.
+* **Business Intelligence and Analytical Queries:**
+  * Critical stock level monitoring and proactive inventory management.
+  * Customer segmentation and lifetime revenue analysis.
+  * Time-based order performance metrics and data analytics using `DATEDIFF`.
 
-## Dosya Yapısı
+## Repository Structure
 
-* `EcemOzen_NovaStore_Proje.sql`: Veritabanı şemasını, tetikleyicileri, görünümleri, test veri setlerini ve analitik rapor sorgularını içeren ana SQL betiği.
+* `EcemOzen_NovaStore_Proje.sql`: The primary SQL script containing the complete database schema, triggers, views, testing datasets, and advanced analytical reporting queries.
 
-## Dağıtım ve Kurulum (Deployment)
+## Deployment and Setup
 
-1. Tercih edilen bir SQL Server yönetim arayüzünü (SSMS, Azure Data Studio vb.) başlatın.
-2. Depoda bulunan `.sql` uzantılı script dosyasını projenize dahil edin.
-3. Betiği execute (çalıştır) ettiğinizde; `NovaStoreDB` veritabanı, şema yapısı, örnek veri seti ve analitik sorgular otomatik olarak konfigüre edilecektir.
+1. Initialize a preferred SQL Server management tool (SSMS, Azure Data Studio, etc.).
+2. Clone or download the `.sql` script file from this repository.
+3. Execute the script to automatically configure the `NovaStoreDB` database, structural schemas, sample datasets, and analytical views.
